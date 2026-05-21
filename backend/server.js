@@ -35,6 +35,7 @@ mongoose
     });
   })
   .catch((error) => {
-    console.error("Chyba při připojení k MongoDB:", error.message);
+    console.error("MONGOOSE ERROR:", error.message);
+    console.error("FULL ERROR:", JSON.stringify(error));
     process.exit(1);
   });
