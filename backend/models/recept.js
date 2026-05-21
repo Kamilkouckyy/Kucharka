@@ -6,6 +6,7 @@ const receptSchema = new mongoose.Schema(
       type: String,
       required: [true, "Název receptu je povinný"],
       trim: true,
+      
     },
     category: {
       type: String,
