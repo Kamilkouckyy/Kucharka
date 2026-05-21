@@ -1,31 +1,35 @@
 console.log('START');
 console.log('MONGODB_URI:', process.env.MONGODB_URI ? 'SET' : 'NOT SET');
 require("dotenv").config();
+console.log('dotenv OK');
 const express = require("express");
+console.log('express OK');
 const mongoose = require("mongoose");
+console.log('mongoose OK');
 const cors = require("cors");
+console.log('cors OK');
 
+console.log('loading suroviny routes...');
 const surovinyRoutes = require("./routes/suroviny");
+console.log('suroviny OK');
+console.log('loading recepty routes...');
 const receptyRoutes = require("./routes/recepty");
+console.log('recepty OK');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/kucharka";
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
 app.use("/api/suroviny", surovinyRoutes);
 app.use("/api/recepty", receptyRoutes);
 
-// Health check
 app.get("/", (req, res) => {
   res.json({ status: "ok", message: "Kucharka API běží" });
 });
 
-// Připojení k MongoDB a spuštění serveru
 mongoose
   .connect(MONGODB_URI)
   .then(() => {
@@ -36,6 +40,5 @@ mongoose
   })
   .catch((error) => {
     console.error("MONGOOSE ERROR:", error.message);
-    console.error("FULL ERROR:", JSON.stringify(error));
     process.exit(1);
   });
