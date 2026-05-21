@@ -1,4 +1,4 @@
-const Recept = require("../models/Recept");
+const Recept = require("../models/recept");
  
 const receptDao = {
   // Vytvoření nového receptu

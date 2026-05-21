@@ -1,4 +1,4 @@
-const Surovina = require("../models/Surovina");
+const Surovina = require("../models/surovina");
  
 const surovinaDao = {
   // Vytvoření nové suroviny
