@@ -1,4 +1,5 @@
-process.on('uncaughtException', (err) => { console.error('UNCAUGHT:', err.message); process.exit(1); });
+console.log('START');
+console.log('MONGODB_URI:', process.env.MONGODB_URI ? 'SET' : 'NOT SET');
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
